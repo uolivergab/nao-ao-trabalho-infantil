@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
@@ -56,8 +56,18 @@ export function Button(props: ButtonProps) {
     baseStyles,
     isGhost ? ghostBaseOverride : sizeStyles[size],
     variantStyles[variant],
+    variant === "primary" ? "btn-primary-hover" : "",
     className,
   ].join(" ");
+
+  // Inline guarantee so the primary CTA's brand green always renders, even if
+  // the arbitrary-value utility loses a precedence battle at runtime. Restricted
+  // to primary: secondary/ghost swap their text color on hover, and an inline
+  // color would block that.
+  const inlineStyles: CSSProperties =
+    variant === "primary"
+      ? { backgroundColor: "var(--color-green)", color: "var(--color-paper)" }
+      : {};
 
   const content = (
     <>
@@ -77,13 +87,14 @@ export function Button(props: ButtonProps) {
           target="_blank"
           rel="noopener noreferrer"
           {...anchorRest}
+          style={inlineStyles}
         >
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={styles} {...anchorRest}>
+      <Link href={href} className={styles} {...anchorRest} style={inlineStyles}>
         {content}
       </Link>
     );
@@ -91,7 +102,7 @@ export function Button(props: ButtonProps) {
 
   const { ...buttonRest } = props as ButtonAsButton;
   return (
-    <button className={styles} {...buttonRest}>
+    <button className={styles} {...buttonRest} style={inlineStyles}>
       {content}
     </button>
   );

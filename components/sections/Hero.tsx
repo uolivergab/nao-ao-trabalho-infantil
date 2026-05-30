@@ -82,17 +82,28 @@ export function Hero() {
 
       <div className="container-page relative z-10 w-full pb-[clamp(4rem,10vh,8rem)] pt-32">
         <div className="max-w-[880px] text-center md:text-left">
-          <motion.p
-            className="text-caption text-[var(--color-amber)]"
+          <motion.div
+            className="flex flex-col items-center gap-1.5 md:flex-row md:items-baseline md:gap-3"
             variants={revealUp}
             custom={0}
             initial="hidden"
             animate="visible"
           >
-            12 de junho · Dia Mundial Contra o Trabalho Infantil
-          </motion.p>
+            <span className="text-[clamp(0.875rem,1.1vw,1rem)] font-medium uppercase tracking-[0.2em] text-[var(--color-amber)]">
+              12 de junho
+            </span>
+            <span
+              aria-hidden="true"
+              className="hidden select-none text-[var(--color-amber)]/40 md:inline"
+            >
+              /
+            </span>
+            <span className="max-w-[280px] text-center text-[clamp(0.6875rem,0.85vw,0.8125rem)] font-medium uppercase tracking-[0.25em] text-[var(--color-amber)]/75 md:max-w-none md:text-left">
+              Dia Mundial Contra o Trabalho Infantil
+            </span>
+          </motion.div>
 
-          <h1 className="mt-6 max-w-[680px] text-balance font-display text-[clamp(2.5rem,5.5vw,4.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--color-text-light)] lg:max-w-[880px]">
+          <h1 className="mt-6 max-w-[680px] text-balance font-display text-[clamp(2rem,5.5vw,4.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--color-text-light)] lg:max-w-[880px]">
             <motion.span
               className="md:block"
               variants={heroHeadline}
@@ -124,9 +135,8 @@ export function Hero() {
             initial="hidden"
             animate="visible"
           >
-            Ele tira escola, descanso, futuro. E deixa marcas para a vida toda.
-            No Brasil, mais de 1,6 milhão de crianças e adolescentes vivem essa
-            realidade hoje.
+            Tira escola, descanso, futuro. Atinge 1,6 milhão de crianças no
+            Brasil hoje.
           </motion.p>
 
           <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 justify-center md:justify-start">

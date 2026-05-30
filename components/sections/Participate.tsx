@@ -61,7 +61,7 @@ export function Participate() {
     >
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 -top-[12%] -bottom-[12%] -z-20 bg-cover bg-center"
+        className="pointer-events-none absolute inset-x-0 -top-[12%] -bottom-[12%] -z-20 bg-cover bg-[center_30%] md:bg-center"
         style={{
           backgroundImage: "url(/images/participacao-sala.webp)",
           ...(prefersReducedMotion ? {} : { y }),

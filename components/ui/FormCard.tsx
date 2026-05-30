@@ -30,7 +30,11 @@ export function FormCard({
   return (
     <motion.article
       className={`group flex flex-col gap-4 md:gap-5 ${
-        variant === "highlight" ? "" : "px-6 md:px-0"
+        variant === "highlight" ? "" : "px-8 md:px-0"
+      } ${
+        index > 1
+          ? "border-t border-[var(--color-text-dark)]/8 pt-8 md:border-t-0 md:pt-0"
+          : ""
       }`}
       variants={cardReveal}
       custom={index - 1}
