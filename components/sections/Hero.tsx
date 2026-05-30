@@ -1,0 +1,187 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { easeCinematic, heroHeadline, revealUp, ctaReveal } from "@/lib/motion";
+
+export function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <section
+      className="relative isolate flex min-h-[100svh] w-full items-end overflow-hidden bg-[var(--color-ink)]"
+      style={{ minHeight: "max(700px, 100svh)" }}
+      aria-label="Apresentação da campanha Não ao Trabalho Infantil"
+    >
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url(/video/hero-poster.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <motion.video
+          initial={{ opacity: 0, scale: 1 }}
+          animate={
+            prefersReducedMotion
+              ? { opacity: 1 }
+              : { opacity: 1, scale: 1.04 }
+          }
+          transition={
+            prefersReducedMotion
+              ? { opacity: { duration: 0.6 } }
+              : {
+                  opacity: { duration: 1.2, ease: easeCinematic },
+                  scale: {
+                    duration: 30,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  },
+                }
+          }
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/video/hero-poster.webp"
+          aria-hidden="true"
+        >
+          <source src="/video/hero-video.webm" type="video/webm" />
+        </motion.video>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(14,14,15,0.85) 0%, rgba(14,14,15,0.45) 40%, rgba(14,14,15,0.55) 70%, rgba(14,14,15,0.90) 100%)",
+        }}
+      />
+
+      <div className="container-page relative z-10 w-full pb-[clamp(4rem,10vh,8rem)] pt-32">
+        <div className="max-w-[880px] text-center md:text-left">
+          <motion.p
+            className="text-caption text-[var(--color-amber)]"
+            variants={revealUp}
+            custom={0}
+            initial="hidden"
+            animate="visible"
+          >
+            12 de junho · Dia Mundial Contra o Trabalho Infantil
+          </motion.p>
+
+          <h1 className="mt-6 max-w-[680px] text-balance font-display text-[clamp(2.5rem,5.5vw,4.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--color-text-light)] lg:max-w-[880px]">
+            <motion.span
+              className="md:block"
+              variants={heroHeadline}
+              custom={0}
+              initial="hidden"
+              animate="visible"
+            >
+              O trabalho infantil tira
+            </motion.span>{" "}
+            <motion.span
+              className="md:block"
+              variants={heroHeadline}
+              custom={1}
+              initial="hidden"
+              animate="visible"
+            >
+              mais do que a{" "}
+              <span className="font-semibold text-[var(--color-amber)]">
+                infância
+              </span>
+              .
+            </motion.span>
+          </h1>
+
+          <motion.p
+            className="text-body-large mt-7 max-w-[36rem] text-[var(--color-text-muted-light)] mx-auto md:mx-0"
+            variants={revealUp}
+            custom={3}
+            initial="hidden"
+            animate="visible"
+          >
+            Ele tira escola, descanso, futuro. E deixa marcas para a vida toda.
+            No Brasil, mais de 1,6 milhão de crianças e adolescentes vivem essa
+            realidade hoje.
+          </motion.p>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5 justify-center md:justify-start">
+            <motion.div
+              variants={ctaReveal}
+              custom={0}
+              initial="hidden"
+              animate="visible"
+            >
+              <Button
+                href="#participe"
+                variant="primary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Participe da campanha
+              </Button>
+            </motion.div>
+            <motion.div
+              variants={ctaReveal}
+              custom={1}
+              initial="hidden"
+              animate="visible"
+            >
+              <Button
+                href="#manifesto"
+                variant="ghost"
+                className="w-full whitespace-nowrap sm:w-auto"
+                icon={
+                  <svg
+                    className="arrow"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 5v14" />
+                    <path d="m5 12 7 7 7-7" />
+                  </svg>
+                }
+              >
+                Entenda o problema
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      <motion.div
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+      >
+        <div className="relative h-6 w-px overflow-hidden bg-[color-mix(in_oklab,var(--color-paper)_25%,transparent)]">
+          <motion.span
+            className="absolute inset-x-0 top-0 block h-2 bg-[var(--color-amber)]"
+            animate={{ y: [0, 24, 0] }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
