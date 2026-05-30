@@ -1,11 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { easeCinematic, heroHeadline, revealUp, ctaReveal } from "@/lib/motion";
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const videoSrc = isMobile
+    ? "/video/hero-video-mobile.webm"
+    : "/video/hero-video.webm";
+  const posterSrc = isMobile
+    ? "/video/hero-poster-mobile.webp"
+    : "/video/hero-poster.webp";
 
   return (
     <section
@@ -16,12 +33,15 @@ export function Hero() {
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: "url(/video/hero-poster.webp)",
+          backgroundImage: `url(${posterSrc})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <motion.video
+          key={videoSrc}
+          src={videoSrc}
+          poster={posterSrc}
           initial={{ opacity: 0, scale: 1 }}
           animate={
             prefersReducedMotion
@@ -47,11 +67,8 @@ export function Hero() {
           muted
           playsInline
           preload="metadata"
-          poster="/video/hero-poster.webp"
           aria-hidden="true"
-        >
-          <source src="/video/hero-video.webm" type="video/webm" />
-        </motion.video>
+        />
       </div>
 
       <div
@@ -112,7 +129,7 @@ export function Hero() {
             realidade hoje.
           </motion.p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5 justify-center md:justify-start">
+          <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 justify-center md:justify-start">
             <motion.div
               variants={ctaReveal}
               custom={0}

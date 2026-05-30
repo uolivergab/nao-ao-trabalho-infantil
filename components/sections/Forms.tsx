@@ -7,6 +7,7 @@ type Form = {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  variant?: "regular" | "highlight";
 };
 
 const FORMS: Form[] = [
@@ -33,6 +34,7 @@ const FORMS: Form[] = [
     imageSrc: "/images/forms/forma-03-vias-publicas.webp",
     imageAlt:
       "Criança trabalhando em uma via pública urbana, exposta ao tráfego e à insegurança.",
+    variant: "highlight",
   },
   {
     title: "Comércio informal",
@@ -57,6 +59,7 @@ const FORMS: Form[] = [
     imageSrc: "/images/forms/forma-06-exploracao.webp",
     imageAlt:
       "Silhueta de criança em ambiente de exploração, representando as piores formas de trabalho infantil.",
+    variant: "highlight",
   },
 ];
 
@@ -92,7 +95,7 @@ export function Forms() {
           </RevealOnScroll>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 md:mt-24">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:mt-24 md:grid-cols-3 md:gap-12">
           {FORMS.map((form, i) => (
             <FormCard
               key={form.title}
@@ -102,6 +105,7 @@ export function Forms() {
               description={form.description}
               imageSrc={form.imageSrc}
               imageAlt={form.imageAlt}
+              variant={form.variant}
             />
           ))}
         </div>

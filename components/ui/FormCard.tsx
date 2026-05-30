@@ -11,6 +11,7 @@ type Props = {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  variant?: "regular" | "highlight";
 };
 
 function pad(n: number) {
@@ -24,24 +25,31 @@ export function FormCard({
   description,
   imageSrc,
   imageAlt,
+  variant = "regular",
 }: Props) {
   return (
     <motion.article
-      className="group flex flex-col gap-5"
+      className="group flex flex-col gap-4 md:gap-5"
       variants={cardReveal}
       custom={index - 1}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-paper-soft)]">
+      <div
+        className={`relative w-full overflow-hidden bg-[var(--color-paper-soft)] ${
+          variant === "highlight"
+            ? "aspect-[4/5]"
+            : "aspect-[5/4] md:aspect-[4/5]"
+        }`}
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           loading="lazy"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="object-cover saturate-[0.85] contrast-[1.05] brightness-[0.95] transition-transform duration-[800ms] ease-out will-change-transform group-hover:scale-[1.05]"
+          sizes="(min-width: 768px) 33vw, 100vw"
+          className="object-cover object-center saturate-[0.85] contrast-[1.05] brightness-[0.95] transition-transform duration-[800ms] ease-out will-change-transform group-hover:scale-[1.05]"
         />
         <div
           aria-hidden="true"

@@ -25,22 +25,22 @@ type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "cta-sheen bg-[var(--color-green)] text-[var(--color-paper)] hover:bg-[var(--color-green-hover)] hover:-translate-y-[2px]",
+    "cta-sheen bg-[var(--color-green)] text-[var(--color-paper)] hover:bg-[var(--color-green-hover)]",
   secondary:
     "border border-[var(--color-paper)] text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)]",
   ghost:
-    "text-[var(--color-paper)] hover:text-[var(--color-amber)] [&_svg.arrow]:transition-transform [&_svg.arrow]:duration-300 hover:[&_svg.arrow]:translate-y-1",
+    "text-[var(--color-paper)] hover:text-[var(--color-amber)] group [&_svg.arrow]:transition-transform [&_svg.arrow]:duration-300 hover:[&_svg.arrow]:translate-y-1",
 };
 
 const sizeStyles: Record<Size, string> = {
   md: "px-6 py-3 text-[0.9375rem]",
-  lg: "px-8 py-4 text-base",
+  lg: "px-7 md:px-8 py-3.5 md:py-4 text-base",
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[0.01em] transition-all duration-250 ease-out will-change-transform min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-amber)]";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-300 ease-out min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-amber)]";
 
-const ghostBaseOverride = "rounded-none px-0 min-h-[44px]";
+const ghostBaseOverride = "rounded-none px-2 py-3.5 md:py-4 text-base";
 
 export function Button(props: ButtonProps) {
   const {

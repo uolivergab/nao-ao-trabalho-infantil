@@ -41,8 +41,8 @@ export function Footer() {
       {/* Bloco 1 — institucional e links (fundo escuro) */}
       <div className="bg-[var(--color-ink-soft)]">
         <div className="container-page py-16 md:py-20">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-            <div className="md:col-span-7">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-20">
+            <div>
               <Image
                 src="/logos/logo-abrinq.webp"
                 alt="Fundação Abrinq"
@@ -72,7 +72,7 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="md:col-span-5">
+            <div className="justify-self-start md:justify-self-end">
               <h2 className="text-[0.75rem] font-medium uppercase tracking-[0.25em] text-[var(--color-amber)]">
                 Links
               </h2>

@@ -27,7 +27,11 @@ export function AnimatedNumber({
   ariaLabel,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.2,
+    margin: "-50px 0px",
+  });
   const prefersReducedMotion = useReducedMotion();
 
   const motionValue = useMotionValue(prefersReducedMotion ? value : 0);
