@@ -61,7 +61,7 @@ export function Hero() {
                   },
                 }
           }
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[center_35%] md:object-center"
           autoPlay
           loop
           muted
@@ -76,11 +76,11 @@ export function Hero() {
         className="absolute inset-0 -z-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(14,14,15,0.85) 0%, rgba(14,14,15,0.45) 40%, rgba(14,14,15,0.55) 70%, rgba(14,14,15,0.90) 100%)",
+            "linear-gradient(180deg, rgba(14,14,15,0.80) 0%, rgba(14,14,15,0.30) 25%, rgba(14,14,15,0.45) 55%, rgba(14,14,15,0.85) 80%, rgba(14,14,15,0.95) 100%)",
         }}
       />
 
-      <div className="container-page relative z-10 w-full pb-[clamp(4rem,10vh,8rem)] pt-32">
+      <div className="container-page relative z-10 w-full pb-[clamp(5rem,14vh,9rem)] pt-32">
         <div className="max-w-[880px] text-center md:text-left">
           <motion.div
             className="flex flex-col items-center gap-1.5 md:flex-row md:items-baseline md:gap-3"
@@ -89,21 +89,30 @@ export function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <span className="text-[clamp(0.875rem,1.1vw,1rem)] font-medium uppercase tracking-[0.2em] text-[var(--color-amber)]">
+            <span
+              className="text-[clamp(0.875rem,1.1vw,1rem)] font-medium uppercase tracking-[0.25em] text-[var(--color-amber-soft)]"
+              style={{ textShadow: "0 2px 12px rgba(14, 14, 15, 0.6)" }}
+            >
               12 de junho
             </span>
             <span
               aria-hidden="true"
-              className="hidden select-none text-[var(--color-amber)]/40 md:inline"
+              className="hidden select-none text-[var(--color-amber-soft)]/40 md:inline"
             >
               /
             </span>
-            <span className="max-w-[280px] text-center text-[clamp(0.6875rem,0.85vw,0.8125rem)] font-medium uppercase tracking-[0.25em] text-[var(--color-amber)]/75 md:max-w-none md:text-left">
+            <span
+              className="max-w-[280px] text-center text-[clamp(0.6875rem,0.85vw,0.8125rem)] font-medium uppercase tracking-[0.25em] text-[var(--color-amber-soft)]/80 md:max-w-none md:text-left"
+              style={{ textShadow: "0 1px 8px rgba(14, 14, 15, 0.7)" }}
+            >
               Dia Mundial Contra o Trabalho Infantil
             </span>
           </motion.div>
 
-          <h1 className="mt-6 max-w-[680px] text-balance font-display text-[clamp(2rem,5.5vw,4.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--color-text-light)] lg:max-w-[880px]">
+          <h1
+            className="mt-6 max-w-[680px] text-balance font-display text-[clamp(2rem,5.5vw,4.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--color-text-light)] lg:max-w-[880px]"
+            style={{ textShadow: "0 2px 20px rgba(14, 14, 15, 0.4)" }}
+          >
             <motion.span
               className="md:block"
               variants={heroHeadline}
@@ -139,7 +148,7 @@ export function Hero() {
             Brasil hoje.
           </motion.p>
 
-          <div className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 justify-center md:justify-start">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 sm:justify-center md:justify-start">
             <motion.div
               variants={ctaReveal}
               custom={0}
@@ -197,10 +206,10 @@ export function Hero() {
         transition={{ duration: 1, delay: 2 }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
       >
-        <div className="relative h-6 w-px overflow-hidden bg-[color-mix(in_oklab,var(--color-paper)_25%,transparent)]">
+        <div className="relative h-12 w-px overflow-hidden bg-[var(--color-paper)]/15">
           <motion.span
-            className="absolute inset-x-0 top-0 block h-2 bg-[var(--color-amber)]"
-            animate={{ y: [0, 24, 0] }}
+            className="absolute inset-x-0 top-0 block h-3 bg-[var(--color-amber)]"
+            animate={{ y: [0, 48, 0] }}
             transition={{
               duration: 2.4,
               repeat: Infinity,

@@ -38,9 +38,10 @@ const sizeStyles: Record<Size, string> = {
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-300 ease-out min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-amber)]";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-300 ease-out min-h-[52px] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-amber)]";
 
-const ghostBaseOverride = "rounded-none px-2 py-3.5 md:py-4 text-base";
+const ghostBaseOverride =
+  "rounded-full border border-[var(--color-paper)]/30 hover:border-[var(--color-amber)]/60 px-6 md:px-7 py-3.5 md:py-4 text-base bg-transparent backdrop-blur-[2px]";
 
 export function Button(props: ButtonProps) {
   const {
