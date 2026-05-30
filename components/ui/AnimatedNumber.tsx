@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import {
   animate,
@@ -29,11 +28,9 @@ export function AnimatedNumber({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, {
     once: true,
-    amount: 0.2,
-    margin: "-50px 0px",
+    amount: 0.1,
   });
   const prefersReducedMotion = useReducedMotion();
-
   const motionValue = useMotionValue(prefersReducedMotion ? value : 0);
   const formatted = useTransform(motionValue, (latest) =>
     nf.format(Math.round(latest))
@@ -45,11 +42,21 @@ export function AnimatedNumber({
       motionValue.set(value);
       return;
     }
-    const controls = animate(motionValue, value, {
-      duration,
-      ease: easeOutQuint,
+
+    motionValue.set(0);
+
+    let controls: ReturnType<typeof animate> | null = null;
+    const frameId = requestAnimationFrame(() => {
+      controls = animate(motionValue, value, {
+        duration,
+        ease: easeOutQuint,
+      });
     });
-    return () => controls.stop();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      if (controls) controls.stop();
+    };
   }, [inView, value, duration, motionValue, prefersReducedMotion]);
 
   return (

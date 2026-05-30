@@ -29,18 +29,20 @@ export function FormCard({
 }: Props) {
   return (
     <motion.article
-      className="group flex flex-col gap-4 md:gap-5"
+      className={`group flex flex-col gap-4 md:gap-5 ${
+        variant === "highlight" ? "" : "px-6 md:px-0"
+      }`}
       variants={cardReveal}
       custom={index - 1}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
       <div
         className={`relative w-full overflow-hidden bg-[var(--color-paper-soft)] ${
           variant === "highlight"
-            ? "aspect-[4/5]"
-            : "aspect-[5/4] md:aspect-[4/5]"
+            ? "aspect-[3/4] md:aspect-[4/5]"
+            : "aspect-[16/10] md:aspect-[4/5]"
         }`}
       >
         <Image
@@ -56,13 +58,27 @@ export function FormCard({
           className="absolute inset-0 bg-[var(--color-ink)] opacity-0 transition-opacity duration-[800ms] ease-out group-hover:opacity-20"
         />
       </div>
-      <div className="flex items-baseline gap-3">
+      <div
+        className={`flex items-baseline gap-3 ${
+          variant === "highlight" ? "px-6 md:px-0" : ""
+        }`}
+      >
         <span className="text-caption text-[var(--color-amber)]/60 transition-colors duration-300 group-hover:text-[var(--color-amber)]">
           {pad(index)} / {pad(total)}
         </span>
       </div>
-      <h3 className="text-h3 text-[var(--color-text-dark)]">{title}</h3>
-      <p className="text-body text-[var(--color-text-muted-dark)] max-w-[36ch]">
+      <h3
+        className={`text-h3 text-[var(--color-text-dark)] ${
+          variant === "highlight" ? "px-6 md:px-0" : ""
+        }`}
+      >
+        {title}
+      </h3>
+      <p
+        className={`text-body text-[var(--color-text-muted-dark)] max-w-[36ch] ${
+          variant === "highlight" ? "px-6 md:px-0" : ""
+        }`}
+      >
         {description}
       </p>
     </motion.article>

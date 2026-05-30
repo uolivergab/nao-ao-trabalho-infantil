@@ -94,20 +94,24 @@ export function Forms() {
             </p>
           </RevealOnScroll>
         </div>
+      </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:mt-24 md:grid-cols-3 md:gap-12">
-          {FORMS.map((form, i) => (
-            <FormCard
-              key={form.title}
-              index={i + 1}
-              total={FORMS.length}
-              title={form.title}
-              description={form.description}
-              imageSrc={form.imageSrc}
-              imageAlt={form.imageAlt}
-              variant={form.variant}
-            />
-          ))}
+      <div className="mt-16 md:mt-24">
+        <div className="mx-auto md:max-w-[1280px] md:px-[clamp(1.5rem,5vw,4rem)]">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-12">
+            {FORMS.map((form, i) => (
+              <FormCard
+                key={form.title}
+                index={i + 1}
+                total={FORMS.length}
+                title={form.title}
+                description={form.description}
+                imageSrc={form.imageSrc}
+                imageAlt={form.imageAlt}
+                variant={form.variant}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
